@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - '0.10'
+before_install:
+  - currentfolder=${PWD##*/}
+  - if [ "$currentfolder" != 'ng-add-dep' ]; then cd .. && eval "mv $currentfolder ng-add-dep" && cd ng-add-dep; fi
+  - npm install -g gulp
+after_success: npm run-script coveralls
