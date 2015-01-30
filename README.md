@@ -4,3 +4,27 @@
 
 > Add a module dependency to an Angular module
 
+## Usage
+
+```javascript
+var ngAddDep = require('ng-add-dep')
+  , fs = require('fs');
+
+/* module.js
+angular
+  .module('module', [
+  ]);
+*/
+var fileContents = fs.readFileSync('module.js');
+
+ngAddDep(fileContents, 'child');
+/* =>
+angular
+  .module('module', [
+    'child'
+  ]);
+*/
+```
+
+## License
+MIT
