@@ -25,6 +25,7 @@
     "module"
   ],
   "dependencies": {
+    "ng-mod-has-dep": "^0.1.0"
   },
   "devDependencies": {
     "coveralls": "^2.11.1",

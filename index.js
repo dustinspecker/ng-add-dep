@@ -1,5 +1,6 @@
 'use strict';
-var endOfLine = require('os').EOL;
+var endOfLine = require('os').EOL
+  , ngModHasDep = require('ng-mod-has-dep');
 
 /**
  * Adds dependency to fileContents
@@ -13,6 +14,10 @@ module.exports = function addDependency(fileContents, dependency) {
     , angularDefinitionOpenLine = -1
     , angularDefinitionCloseLine = -1
     , i, numOfSpaces;
+
+  if (ngModHasDep(fileContents, dependency)) {
+    return fileContents;
+  }
 
   lines.forEach(function (line, i) {
     // find line with angular.module('*', [

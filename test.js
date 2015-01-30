@@ -29,4 +29,12 @@ describe('ng-add-dep', function () {
                     '  ]);'].join('');
     assert(ngAddDep(ngAddDep(fileContents, 'test'), 'test2') === expected);
   });
+
+  it('should not add exising dep', function () {
+    var expected = ['angular' + EOL,
+                    '  .module(\'module\', [' + EOL,
+                    '    \'test\'' + EOL,
+                    '  ]);'].join('');
+    assert(ngAddDep(ngAddDep(fileContents, 'test'), 'test') === expected);
+  });
 });

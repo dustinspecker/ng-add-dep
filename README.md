@@ -17,11 +17,30 @@ angular
 */
 var fileContents = fs.readFileSync('module.js');
 
-ngAddDep(fileContents, 'child');
+fileContents = ngAddDep(fileContents, 'child');
 /* =>
 angular
   .module('module', [
     'child'
+  ]);
+*/
+
+fileContents = ngAddDep(fileContents, 'child2');
+/* =>
+angular
+  .module('module', [
+    'child',
+    'child2'
+  ]);
+*/
+
+fileContents = ngAddDep(fileContents, 'child');
+// doesn't add duplicate dependencies
+/* =>
+angular
+  .module('module', [
+    'child',
+    'child2'
   ]);
 */
 ```
