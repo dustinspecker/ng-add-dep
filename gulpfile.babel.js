@@ -1,15 +1,15 @@
 'use strict';
-var eslint = require('gulp-eslint')
-  , gulp = require('gulp')
-  , istanbul = require('gulp-istanbul')
-  , jscs = require('gulp-jscs')
-  , jshint = require('gulp-jshint')
-  , mocha = require ('gulp-mocha')
+import eslint from 'gulp-eslint';
+import gulp from 'gulp';
+import istanbul from 'gulp-istanbul';
+import jscs from 'gulp-jscs';
+import jshint from 'gulp-jshint';
+import mocha from 'gulp-mocha';
 
-  , srcFiles = 'index.js'
+const srcFiles = 'index.js'
   , testFiles = 'test.js';
 
-gulp.task('lint', function () {
+gulp.task('lint', () => {
   return gulp.src([srcFiles, testFiles])
     .pipe(eslint())
     .pipe(eslint.formatEach('./node_modules/eslint-path-formatter'))
@@ -18,11 +18,11 @@ gulp.task('lint', function () {
     .pipe(jshint());
 });
 
-gulp.task('test', ['lint'], function (cb) {
+gulp.task('test', ['lint'], (cb) => {
   gulp.src([srcFiles, '!' + testFiles])
     .pipe(istanbul())
     .pipe(istanbul.hookRequire())
-    .on('finish', function () {
+    .on('finish', () => {
       gulp.src([testFiles])
         .pipe(mocha())
         .pipe(istanbul.writeReports())
