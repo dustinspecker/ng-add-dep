@@ -10,7 +10,7 @@ var endOfLine = require('os').EOL
  */
 module.exports = function addDependency(fileContents, dependency) {
   // find line to add new dependency
-  var lines = fileContents.split(endOfLine)
+  var lines = fileContents.split(/\r?\n/)
     , angularDefinitionOpenLine = -1
     , angularDefinitionCloseLine = -1
     , i, numOfSpaces;

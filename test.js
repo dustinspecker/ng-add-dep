@@ -8,8 +8,8 @@ describe('ng-add-dep', function () {
   var fileContents;
 
   beforeEach(function () {
-    fileContents = ['angular' + EOL,
-                    '  .module(\'module\', [' + EOL,
+    fileContents = ['angular' + '\n',
+                    '  .module(\'module\', [' + '\r\n',
                     '  ]);'].join('');
   });
 
