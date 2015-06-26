@@ -1,5 +1,6 @@
 'use strict';
-var gulp = require('gulp')
+var eslint = require('gulp-eslint')
+  , gulp = require('gulp')
   , istanbul = require('gulp-istanbul')
   , jscs = require('gulp-jscs')
   , jshint = require('gulp-jshint')
@@ -10,6 +11,9 @@ var gulp = require('gulp')
 
 gulp.task('lint', function () {
   return gulp.src([srcFiles, testFiles])
+    .pipe(eslint())
+    .pipe(eslint.formatEach('./node_modules/eslint-path-formatter'))
+    .pipe(eslint.failOnError())
     .pipe(jscs())
     .pipe(jshint());
 });

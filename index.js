@@ -4,9 +4,9 @@ var endOfLine = require('os').EOL
 
 /**
  * Adds dependency to fileContents
- * @param {String} fileContents
- * @param {String} dependency
- * @return {String}
+ * @param {String} fileContents - contents to add dependenc to
+ * @param {String} dependency - dependency to add
+ * @return {String} - file contents with dependency added
  */
 module.exports = function addDependency(fileContents, dependency) {
   // find line to add new dependency
@@ -19,15 +19,15 @@ module.exports = function addDependency(fileContents, dependency) {
     return fileContents;
   }
 
-  lines.forEach(function (line, i) {
+  lines.forEach(function (line, lineIndex) {
     // find line with angular.module('*', [
     if (angularDefinitionOpenLine < 0 && line.indexOf('.module') > -1) {
-      angularDefinitionOpenLine = i;
+      angularDefinitionOpenLine = lineIndex;
     }
 
     // find line with closing ]);
     if (angularDefinitionOpenLine > -1 && angularDefinitionCloseLine < 0 && line.indexOf(']') > -1) {
-      angularDefinitionCloseLine = i;
+      angularDefinitionCloseLine = lineIndex;
     }
   });
 
