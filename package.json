@@ -26,6 +26,7 @@
   ],
   "dependencies": {
     "eslint-path-formatter": "^0.1.1",
+    "newline-regex": "^0.1.0",
     "ng-mod-has-dep": "^0.1.0"
   },
   "devDependencies": {
