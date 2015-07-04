@@ -1,40 +1,44 @@
-/* global describe, beforeEach, it */
+/* global describe, it */
 'use strict';
-var assert = require('assert')
-  , EOL = require('os').EOL
-  , ngAddDep = require('./');
+import assert from 'assert';
+import {EOL} from 'os';
+import ngAddDep from './lib/';
 
-describe('ng-add-dep', function () {
-  var fileContents;
+describe('ng-add-dep', () => {
+  let fileContents = [
+    'angular\n',
+    `  .module('module', [\r\n`,
+    '  ]);'
+  ].join('');
 
-  beforeEach(function () {
-    fileContents = ['angular' + '\n',
-                    '  .module(\'module\', [' + '\r\n',
-                    '  ]);'].join('');
-  });
-
-  it('should add test dep', function () {
-    var expected = ['angular' + EOL,
-                    '  .module(\'module\', [' + EOL,
-                    '    \'test\'' + EOL,
-                    '  ]);'].join('');
+  it('should add test dep', () => {
+    const expected = [
+      `angular${EOL}`,
+      `  .module('module', [${EOL}`,
+      `    'test'${EOL}`,
+      '  ]);'
+    ].join('');
     assert(ngAddDep(fileContents, 'test') === expected);
   });
 
-  it('should add comma and new line delimeted deps', function () {
-    var expected = ['angular' + EOL,
-                    '  .module(\'module\', [' + EOL,
-                    '    \'test\',' + EOL,
-                    '    \'test2\'' + EOL,
-                    '  ]);'].join('');
+  it('should add comma and new line delimeted deps', () => {
+    const expected = [
+      `angular${EOL}`,
+      `  .module('module', [${EOL}`,
+      `    'test',${EOL}`,
+      `    'test2'${EOL}`,
+      '  ]);'
+    ].join('');
     assert(ngAddDep(ngAddDep(fileContents, 'test'), 'test2') === expected);
   });
 
-  it('should not add exising dep', function () {
-    var expected = ['angular' + EOL,
-                    '  .module(\'module\', [' + EOL,
-                    '    \'test\'' + EOL,
-                    '  ]);'].join('');
+  it('should not add exising dep', () => {
+    const expected = [
+      `angular${EOL}`,
+      `  .module('module', [${EOL}`,
+      `    'test'${EOL}`,
+      '  ]);'
+    ].join('');
     assert(ngAddDep(ngAddDep(fileContents, 'test'), 'test') === expected);
   });
 });

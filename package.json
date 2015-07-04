@@ -3,7 +3,7 @@
   "version": "0.3.0",
   "description": "Add a module dependency to an Angular module",
   "license": "MIT",
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": "dustinspecker/ng-add-dep",
   "author": {
     "name": "Dustin Specker",
@@ -18,7 +18,7 @@
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "files": [
-    "index.js"
+    "lib"
   ],
   "keywords": [
     "angular",
@@ -32,7 +32,9 @@
   "devDependencies": {
     "babel": "^5.6.14",
     "coveralls": "^2.11.1",
+    "del": "^1.2.0",
     "gulp": "^3.9.0",
+    "gulp-babel": "^5.1.0",
     "gulp-eslint": "^0.15.0",
     "gulp-istanbul": "^0.10.0",
     "gulp-jscs": "^1.4.0",
