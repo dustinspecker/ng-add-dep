@@ -12,7 +12,7 @@ describe('ng-add-dep', () => {
   ].join('');
 
   it('should add test dep', () => {
-    const expected = [
+    let expected = [
       `angular${EOL}`,
       `  .module('module', [${EOL}`,
       `    'test'${EOL}`,
@@ -22,7 +22,7 @@ describe('ng-add-dep', () => {
   });
 
   it('should add comma and new line delimeted deps', () => {
-    const expected = [
+    let expected = [
       `angular${EOL}`,
       `  .module('module', [${EOL}`,
       `    'test',${EOL}`,
@@ -33,7 +33,7 @@ describe('ng-add-dep', () => {
   });
 
   it('should not add exising dep', () => {
-    const expected = [
+    let expected = [
       `angular${EOL}`,
       `  .module('module', [${EOL}`,
       `    'test'${EOL}`,
