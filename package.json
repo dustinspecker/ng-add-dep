@@ -30,7 +30,7 @@
     "ng-mod-has-dep": "^0.1.0"
   },
   "devDependencies": {
-    "babel-core": "^6.0.12",
+    "babel-core": "^6.0.18",
     "babel-eslint": "^4.1.3",
     "babel-preset-es2015": "^6.0.14",
     "coveralls": "^2.11.1",
