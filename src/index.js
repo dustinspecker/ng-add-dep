@@ -9,7 +9,7 @@ import ngModHasDep from 'ng-mod-has-dep';
  * @param {String} dependency - dependency to add
  * @return {String} - file contents with dependency added
  */
-export default function addDependency(fileContents, dependency) {
+module.exports = function (fileContents, dependency) {
   // find line to add new dependency
   let lines = fileContents.split(newlineRegex)
     , angularDefinitionOpenLine = -1
@@ -53,4 +53,4 @@ export default function addDependency(fileContents, dependency) {
   lines.splice(angularDefinitionCloseLine, 0, dependency);
 
   return lines.join(EOL);
-}
+};
