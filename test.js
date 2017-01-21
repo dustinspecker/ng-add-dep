@@ -7,7 +7,7 @@ import ngAddDep from './lib/'
 describe('ng-add-dep', () => {
   const fileContents = [
     'angular\n',
-    `  .module('module', [\r\n`,
+    '  .module(\'module\', [\r\n',
     '  ])'
   ].join('')
 
