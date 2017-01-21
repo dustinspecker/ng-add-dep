@@ -11,7 +11,7 @@
     "url": "https://github.com/dustinspecker"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4"
   },
   "scripts": {
     "test": "gulp test",
