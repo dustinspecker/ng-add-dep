@@ -13,32 +13,32 @@ describe('ng-add-dep', () => {
 
   it('should add test dep', () => {
     const expected = [
-      `angular${EOL}`,
-      `  .module('module', [${EOL}`,
-      `    'test'${EOL}`,
+      'angular',
+      '  .module(\'module\', [',
+      '    \'test\'',
       '  ])'
-    ].join('')
+    ].join(EOL)
     assert(ngAddDep(fileContents, 'test') === expected)
   })
 
   it('should add comma and new line delimeted deps', () => {
     const expected = [
-      `angular${EOL}`,
-      `  .module('module', [${EOL}`,
-      `    'test',${EOL}`,
-      `    'test2'${EOL}`,
+      'angular',
+      '  .module(\'module\', [',
+      '    \'test\',',
+      '    \'test2\'',
       '  ])'
-    ].join('')
+    ].join(EOL)
     assert(ngAddDep(ngAddDep(fileContents, 'test'), 'test2') === expected)
   })
 
   it('should not add exising dep', () => {
     const expected = [
-      `angular${EOL}`,
-      `  .module('module', [${EOL}`,
-      `    'test'${EOL}`,
+      'angular',
+      '  .module(\'module\', [',
+      '    \'test\'',
       '  ])'
-    ].join('')
+    ].join(EOL)
     assert(ngAddDep(ngAddDep(fileContents, 'test'), 'test') === expected)
   })
 })
